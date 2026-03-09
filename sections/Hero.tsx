@@ -23,7 +23,7 @@ function SolarpunkSpinner() {
       transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <svg viewBox="0 0 280 80" xmlns="https://www.w3.org/2000/svg" fill="none">
         {/* Main hull — glossy white */}
         <ellipse cx="140" cy="40" rx="118" ry="15" stroke="white" strokeWidth="1.4" fill="rgba(255,255,255,0.05)" />
         {/* Upper dome */}
@@ -119,7 +119,7 @@ function GrowingTitle({
       {words.map((word, i) => (
         <motion.span
           key={i}
-          style={{ display: "inline-block", color, fontSize, fontFamily: "inherit", letterSpacing: "inherit" }}
+          style={{ display: "inline-block", color, fontSize, fontFamily: "inherit", letterSpacing: "inherit" , fontWeight: "bold", textShadow: "0 0 20px rgba(5,150,105,0.3), 0 10px 20px rgba(0,0,0,0.3)"}}
           initial={{ opacity: 0, scale: 0.4, y: 14 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{
@@ -156,10 +156,10 @@ function PowerSourceIndicator() {
       />
       <span
         className="font-mono text-[8px] tracking-widest uppercase"
-        style={{ color: "rgba(249,115,22,0.7)" }}
+        style={{ color: "rgba(249,115,22,0.7)", textShadow: "0 0 8px rgba(249,115,22,0.3)" }}
       >
         System Power: Solar{" "}
-        <span style={{ color: "rgba(5,150,105,0.6)" }}>| Grid Status: Optimal</span>
+        <span style={{ color: "rgba(5,150,105,0.6)", textShadow: "0 0 8px rgba(5,150,105,0.3)" }}>| Grid Status: Optimal</span>
       </span>
       <span
         className="w-1.5 h-1.5 rounded-full"
@@ -180,6 +180,18 @@ export function Hero() {
       className="relative w-full h-screen-safe overflow-hidden flex flex-col items-center justify-center"
       aria-label="Hero"
     >
+      <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        backgroundImage: `url('/solarpunk.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        zIndex: 0,
+        
+      }}
+    />
       {/* Nature particles (pollen/spores) */}
       <ParticleSystem />
 
@@ -229,8 +241,8 @@ export function Hero() {
 
       {/* Top HUD bar */}
       <motion.div
-        className="absolute top-6 left-1/2 -translate-x-1/2 font-mono text-[9px] tracking-widest uppercase hidden sm:flex items-center gap-3"
-        style={{ color: "rgba(5,150,105,0.5)" }}
+        className="absolute top-6 left-1/2 -translate-x-1/2 font-mono text-[15px] tracking-widest uppercase hidden sm:flex items-center gap-3"
+        style={{ color: "rgba(5,150,105,0.5)", textShadow: "0 0 8px rgba(5,150,105,0.3)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
@@ -244,119 +256,128 @@ export function Hero() {
       </motion.div>
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 text-center px-4 sm:px-8">
+      <div className="relative z-10 px-4 sm:px-8 flex flex-col items-center justify-center w-full">
 
-        {/* Name — GROWING animation (organic spring) */}
-        <h1
-          className="font-display uppercase leading-none mb-2 sm:mb-4"
-          style={{ letterSpacing: "0.08em" }}
-        >
-          {disabled ? (
+        {/* Text content centered */}
+        <div className="relative z-10 text-center w-full flex flex-col items-center">
+
+          {/* Name — GROWING animation (organic spring) */}
+          <h1
+            className="font-display uppercase leading-none mb-2 sm:mb-4"
+            style={{ letterSpacing: "0.08em" }}
+          >
+            {disabled ? (
+              <span
+                style={{
+                  fontSize: "clamp(3rem, 9vw + 1rem, 7rem)",
+                  color: "#059669",
+                  textShadow: "0 0 20px rgba(5,150,105,0.4), 0 0 40px rgba(5,150,105,0.2)",
+                }}
+              >
+                {profile.name.toUpperCase()}
+              </span>
+            ) : (
+              <GrowingTitle
+                text={profile.name.toUpperCase()}
+                delay={0.3}
+                color="#ffffff"
+                  fontSize="clamp(3rem, 9vw + 1rem, 7rem)"
+              />
+            )}
+          </h1>
+
+          {/* Separator — emerald to cyan gradient */}
+          <motion.div
+            className="h-px mx-auto mb-3 sm:mb-5"
+            style={{
+              background: "linear-gradient(90deg, transparent, #059669, #ffffff, transparent)",
+              width: "clamp(200px, 60%, 600px)",
+            }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: disabled ? 0 : 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          {/* Tagline */}
+          <motion.div
+            className="flex items-center justify-center gap-2 mb-4 sm:mb-6"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: disabled ? 0 : 0.9, duration: 0.6 }}
+          >
             <span
+              className="w-2 h-2 rounded-full flex-shrink-0"
               style={{
-                fontSize: "clamp(2.75rem, 8vw + 0.5rem, 7.5rem)",
-                color: "#059669",
+                background: "#059669",
+                boxShadow: "0 0 6px #059669, 0 0 12px rgba(5,150,105,0.4)",
+                animation: "solar-pulse 2.5s ease-in-out infinite",
+              }}
+            />
+            <p
+              className="font-mono uppercase tracking-widest"
+              style={{
+                fontSize: "clamp(0.75rem, 1.8vw, 1rem)",
+                letterSpacing: "0.28em",
+                color: "#ffffff",
+                textShadow: "0 0 10px rgba(5,150,105,0.5), 0 4px 8px rgba(0,0,0,0.3)",
               }}
             >
-              {profile.name.toUpperCase()}
-            </span>
-          ) : (
-            <GrowingTitle
-              text={profile.name.toUpperCase()}
-              delay={0.3}
-              color="#059669"
-              fontSize="clamp(2.75rem, 8vw + 0.5rem, 7.5rem)"
-            />
-          )}
-        </h1>
+              {profile.tagline}
+            </p>
+          </motion.div>
 
-        {/* Separator — emerald to cyan gradient */}
-        <motion.div
-          className="h-px mx-auto mb-3 sm:mb-5"
-          style={{
-            background: "linear-gradient(90deg, transparent, #059669, #0891B2, transparent)",
-            width: "clamp(200px, 60%, 600px)",
-          }}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: disabled ? 0 : 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        />
-
-        {/* Tagline */}
-        <motion.div
-          className="flex items-center justify-center gap-2 mb-4 sm:mb-6"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: disabled ? 0 : 0.9, duration: 0.6 }}
-        >
-          <span
-            className="w-2 h-2 rounded-full flex-shrink-0"
+          {/* Professional title */}
+          <motion.p
+            className="font-mono mb-8 sm:mb-10 max-w-sm mx-auto"
             style={{
-              background: "#059669",
-              boxShadow: "0 0 6px #059669, 0 0 12px rgba(5,150,105,0.4)",
-              animation: "solar-pulse 2.5s ease-in-out infinite",
+              fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
+              color: "#ffffff",
+              textShadow: "0 0 10px rgba(5,150,105,0.4), 0 4px 8px rgba(0,0,0,0.3)",
             }}
-          />
-          <p
-            className="font-mono uppercase tracking-widest"
-            style={{
-              fontSize: "clamp(0.6rem, 1.2vw, 0.8rem)",
-              letterSpacing: "0.28em",
-              color: "rgba(5,150,105,0.75)",
-            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: disabled ? 0 : 1.4, duration: 0.7 }}
           >
-            {profile.tagline}
-          </p>
-        </motion.div>
+            {profile.title}
+          </motion.p>
 
-        {/* Professional title */}
-        <motion.p
-          className="font-mono mb-8 sm:mb-10 max-w-sm mx-auto"
-          style={{
-            fontSize: "clamp(0.75rem, 1.5vw, 0.95rem)",
-            color: "rgba(6,78,59,0.55)",
-          }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: disabled ? 0 : 1.4, duration: 0.7 }}
-        >
-          {profile.title}
-        </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: disabled ? 0 : 1.7, duration: 0.6 }}
-        >
+          {/* CTA buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: disabled ? 0 : 1.7, duration: 0.6 }}
+          >
           <a
             href="#projects"
-            className="chromatic font-mono text-[11px] tracking-widest uppercase
-                       min-h-[48px] flex items-center justify-center
-                       px-6 sm:px-8 py-3 w-full sm:w-auto
+            className="chromatic font-mono text-sm tracking-widest uppercase
+                       min-h-[56px] flex items-center justify-center
+                       px-8 sm:px-10 py-4 w-full sm:w-auto
                        transition-all duration-200"
             style={{
               border: "1px solid rgba(5,150,105,0.5)",
-              color: "#059669",
-              background: "rgba(5,150,105,0.05)",
+              color: "#ffffff",
+              background: "#059669",
               boxShadow: "0 0 12px rgba(5,150,105,0.15)",
+              textShadow: "0 2px 4px rgba(0,0,0,0.3)",
             }}
           >
             [ VIEW PROJECTS ]
           </a>
           <a
             href="#contact"
-            className="font-mono text-[11px] tracking-widest uppercase
-                       min-h-[48px] flex items-center justify-center
-                       px-6 sm:px-8 py-3 w-full sm:w-auto
+            className="font-mono text-sm tracking-widest uppercase
+                       min-h-[56px] flex items-center justify-center
+                       px-8 sm:px-10 py-4 w-full sm:w-auto
                        transition-all duration-200"
             style={{
-              border: "1px solid rgba(8,145,178,0.35)",
-              color: "rgba(8,145,178,0.75)",
+              border: "1px solid #ffff",
+              color: "#25c5db",
+              background: "#ffffff",
+              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(8,145,178,0.65)";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "#04adf6";
               (e.currentTarget as HTMLAnchorElement).style.color = "#0891B2";
             }}
             onMouseLeave={(e) => {
@@ -367,6 +388,7 @@ export function Hero() {
             [ CONTACT ]
           </a>
         </motion.div>
+        </div>
       </div>
 
       {/* Scroll cue */}
@@ -378,7 +400,7 @@ export function Hero() {
       >
         <span
           className="font-mono text-[9px] tracking-widest uppercase"
-          style={{ color: "rgba(5,150,105,0.4)" }}
+          style={{ color: "rgba(5,150,105,0.4)", textShadow: "0 0 8px rgba(5,150,105,0.2)" }}
         >
           SCROLL
         </span>

@@ -3,7 +3,7 @@
 // ============================================================
 
 export const profile = {
-  name:    "YOUR NAME",
+  name:    "Meng Heng",
   title:   "Software Engineer",
   tagline: "SOLAR GRID: OPTIMAL — GROWING",
   bio: `Root system online. Growth confirmed.

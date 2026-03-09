@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PulsingIrisSVG } from "@/components/PulsingIrisSVG";
 import { profile }        from "@/data/portfolioData";
 import { useMotionConfig } from "@/hooks/useMotionConfig";
 
@@ -23,15 +22,22 @@ export function About() {
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-10 md:gap-20 items-center">
 
-        {/* Pulsing iris */}
+        {/* Profile image */}
         <motion.div
-          className="w-full max-w-[220px] mx-auto md:max-w-none md:mx-0"
+          className="w-full max-w-[280px] mx-auto md:max-w-none md:mx-0  overflow-hidden rounded-lg"
           initial={disabled ? {} : { opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ ...transition, duration: 1.0 }}
+          style={{
+            boxShadow: "0 0 24px rgba(5,150,105,0.3), inset 0 0 24px rgba(5,150,105,0.1)",
+          }}
         >
-          <PulsingIrisSVG />
+          <img
+            src="/pic_nobackground.png"
+            alt="Profile"
+            className="w-full h-full object-cover"
+          />
         </motion.div>
 
         {/* Narrative text */}
@@ -51,7 +57,7 @@ export function About() {
               textShadow:    "0 0 20px rgba(5,150,105,0.25)",
             }}
           >
-            ABOUT
+            ABOUT ME
           </h2>
 
           <div
