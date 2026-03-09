@@ -2,14 +2,17 @@
 
 @theme {
   /* =============================================
-     COLOR PALETTE — Neon-Noir / Blade Runner 2049
+     COLOR PALETTE — Solar-Tech Architect / Solarpunk
      ============================================= */
-  --color-obsidian:  #05070A;
-  --color-k-orange:  #FF007F;   /* Neon Pink  — primary accent  */
-  --color-dune-gold: #00F3FF;   /* Electric Cyan — secondary accent */
-  --color-neon-pink: #FF007F;
-  --color-cyan:      #00F3FF;
-  --color-fog:       #0D1117;
+  --color-obsidian:      #F0FDF4;   /* Soft Mint — page background           */
+  --color-white:         #134e2a;   /* Dark Forest — overrides Tailwind white for text */
+  --color-k-orange:      #059669;   /* Vibrant Emerald — primary accent      */
+  --color-dune-gold:     #0891B2;   /* Electric Cyan — secondary accent      */
+  --color-neon-pink:     #059669;   /* Alias: emerald (primary)              */
+  --color-cyan:          #0891B2;   /* Electric Cyan                         */
+  --color-fog:           #D1FAE5;   /* Card backgrounds — light mint         */
+  --color-solar-orange:  #F97316;   /* Sunset Orange — energy highlights     */
+  --color-ink:           #064e3b;   /* Dark Forest — explicit body text      */
 
   /* =============================================
      FLUID TYPE SCALE
@@ -21,59 +24,82 @@
   --text-hud:      clamp(0.625rem, 1vw, 0.875rem);
 
   /* FONTS */
-  --font-display: var(--font-orbitron), "Orbitron", sans-serif;
-  --font-mono:    var(--font-jetbrains), "JetBrains Mono", monospace;
+  --font-display: var(--font-syne), "Syne", sans-serif;
+  --font-mono:    var(--font-fira), "Fira Code", monospace;
 
   /* LETTER SPACING */
-  --tracking-display: 0.12em;
-  --tracking-hud:     0.25em;
+  --tracking-display: 0.08em;
+  --tracking-hud:     0.18em;
 
   /* =============================================
      ANIMATIONS
      ============================================= */
-  --animate-flicker:     neon-flicker 3.5s infinite linear;
+  --animate-leaf-sway:   leaf-sway 4.5s ease-in-out infinite;
   --animate-pulse-hud:   pulse-hud 2.5s ease-in-out infinite;
-  --animate-grain-shift: grain-shift 0.5s steps(1) infinite;
   --animate-blink:       blink 1s step-end infinite;
-  --animate-float:       float 6s ease-in-out infinite;
-  --animate-glow-pulse:  glow-pulse 2s ease-in-out infinite;
-  --animate-scanline:    scan-line 5s linear infinite;
+  --animate-float:       float 7s ease-in-out infinite;
+  --animate-solar-pulse: solar-pulse 2.5s ease-in-out infinite;
+  --animate-glow-pulse:  glow-pulse 2.5s ease-in-out infinite;
+  --animate-drone-hover: drone-hover 3.5s ease-in-out infinite;
+  --animate-grow-letter: grow-letter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 /* =============================================
    KEYFRAMES
    ============================================= */
-@keyframes neon-flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-  20%, 24%                           { opacity: 0.08; }
-  55%                                { opacity: 0.25; }
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-3deg) translateX(0px);  }
+  33%       { transform: rotate(2deg)  translateX(4px);  }
+  66%       { transform: rotate(-1deg) translateX(-3px); }
 }
 @keyframes pulse-hud {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50%       { opacity: 0.9; transform: scale(1.03); }
-}
-@keyframes grain-shift {
-  0%   { background-position: 0 0; }
-  25%  { background-position: -55px -40px; }
-  50%  { background-position: -100px 10px; }
-  75%  { background-position: 30px -80px; }
-  100% { background-position: -70px -20px; }
+  0%, 100% { opacity: 0.5; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.05); }
 }
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-18px) rotate(1deg); }
+  0%, 100% { transform: translateY(0px)    rotate(-0.5deg); }
+  50%       { transform: translateY(-14px)  rotate(0.5deg);  }
+}
+@keyframes solar-pulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 8px rgba(249,115,22,0.45); }
+  50%       { opacity: 1;   box-shadow: 0 0 18px rgba(249,115,22,0.75), 0 0 32px rgba(249,115,22,0.3); }
 }
 @keyframes glow-pulse {
   0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
+  50%       { opacity: 1;   }
 }
-@keyframes scan-line {
-  0%   { transform: translateY(-4px); }
-  100% { transform: translateY(100vh); }
+@keyframes drone-hover {
+  0%, 100% { transform: translateY(0px)  translateX(0px);  }
+  33%       { transform: translateY(-6px) translateX(4px);  }
+  66%       { transform: translateY(4px)  translateX(-3px); }
+}
+@keyframes grow-letter {
+  0%   { opacity: 0; transform: scale(0.5) translateY(10px); }
+  100% { opacity: 1; transform: scale(1)   translateY(0px);  }
+}
+
+/* Spinner drift — CSS animation for FlyingSpinner */
+@keyframes spinner-drift {
+  0%   { transform: translateX(-260px); opacity: 0; }
+  6%   { opacity: 0.16;                              }
+  93%  { opacity: 0.16;                              }
+  100% { transform: translateX(calc(100vw + 260px)); opacity: 0; }
+}
+@keyframes spinner-drift-rtl {
+  0%   { transform: translateX(calc(100vw + 260px)) scaleX(-1); opacity: 0; }
+  6%   { opacity: 0.12;                                                       }
+  93%  { opacity: 0.12;                                                       }
+  100% { transform: translateX(-260px) scaleX(-1); opacity: 0;               }
+}
+@keyframes spinner-drift-3 {
+  0%   { transform: translateX(-200px); opacity: 0; }
+  8%   { opacity: 0.1;                              }
+  92%  { opacity: 0.1;                              }
+  100% { transform: translateX(calc(100vw + 200px)); opacity: 0; }
 }
 
 /* =============================================
@@ -92,102 +118,75 @@
   }
 
   /* --- iOS-safe full height --- */
-  .h-screen-safe     { height: 100dvh; }
+  .h-screen-safe     { height: 100dvh;  }
   .min-h-screen-safe { min-height: 100svh; }
 
-  /* --- Film grain (inline SVG, no external file) --- */
-  .film-grain {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 50;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 256px 256px;
-    opacity: 0.04;
-    mix-blend-mode: overlay;
-    animation: grain-shift 0.5s steps(1) infinite;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .film-grain { animation: none; opacity: 0.02; }
-  }
-
-  /* --- Glassmorphism card --- */
+  /* --- Glassmorphism card (bright / solarpunk) --- */
   .glass-card {
-    background: rgba(13, 17, 23, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 0, 127, 0.12);
+    background: rgba(240, 253, 244, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(5, 150, 105, 0.18);
     box-shadow:
-      0 0 0 1px rgba(255, 0, 127, 0.04),
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      0 0 0 1px rgba(5, 150, 105, 0.06),
+      0 8px 32px rgba(6, 78, 59, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
   .glass-card:hover {
-    border-color: rgba(255, 0, 127, 0.32);
+    border-color: rgba(5, 150, 105, 0.38);
     box-shadow:
-      0 0 20px rgba(255, 0, 127, 0.15),
-      0 0 40px rgba(255, 0, 127, 0.07),
-      0 8px 32px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 0 20px rgba(5, 150, 105, 0.14),
+      0 0 42px rgba(5, 150, 105, 0.07),
+      0 8px 32px rgba(6, 78, 59, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
   .glass-card-cyan {
-    background: rgba(13, 17, 23, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 243, 255, 0.1);
+    background: rgba(236, 254, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(8, 145, 178, 0.18);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      0 8px 32px rgba(6, 78, 59, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
-  /* --- Neon glow text --- */
+  /* --- Emerald glow text --- */
   .text-glow-pink {
     text-shadow:
-      0 0 6px rgba(255,0,127,1),
-      0 0 16px rgba(255,0,127,0.7),
-      0 0 35px rgba(255,0,127,0.4);
+      0 0 5px rgba(5,150,105,0.8),
+      0 0 14px rgba(5,150,105,0.5),
+      0 0 30px rgba(5,150,105,0.25);
   }
   .text-glow-cyan {
     text-shadow:
-      0 0 6px rgba(0,243,255,1),
-      0 0 16px rgba(0,243,255,0.7),
-      0 0 35px rgba(0,243,255,0.4);
+      0 0 5px rgba(8,145,178,0.8),
+      0 0 14px rgba(8,145,178,0.5),
+      0 0 30px rgba(8,145,178,0.25);
   }
 
-  /* --- Neon glow borders / boxes --- */
+  /* --- Glow borders --- */
   .glow-pink {
-    box-shadow: 0 0 10px rgba(255,0,127,0.4), 0 0 25px rgba(255,0,127,0.2);
+    box-shadow: 0 0 10px rgba(5,150,105,0.3), 0 0 24px rgba(5,150,105,0.14);
   }
   .glow-cyan {
-    box-shadow: 0 0 10px rgba(0,243,255,0.35), 0 0 25px rgba(0,243,255,0.15);
+    box-shadow: 0 0 10px rgba(8,145,178,0.28), 0 0 24px rgba(8,145,178,0.12);
+  }
+  .glow-solar {
+    box-shadow: 0 0 10px rgba(249,115,22,0.45), 0 0 24px rgba(249,115,22,0.2);
   }
 
-  /* --- Chromatic aberration on hover (desktop only) --- */
-  .chromatic { filter: none; transition: filter 0.2s ease; }
+  /* --- Hover lift (replaces chromatic aberration) --- */
+  .chromatic { filter: none; transition: filter 0.2s ease, transform 0.2s ease; }
   .chromatic:hover {
-    filter:
-      drop-shadow(-1.5px 0 0 rgba(255, 0, 127, 0.55))
-      drop-shadow( 1.5px 0 0 rgba(0, 243, 255, 0.55));
+    filter: drop-shadow(0 4px 14px rgba(5,150,105,0.22));
+    transform: translateY(-2px);
   }
   @media (pointer: coarse) {
-    .chromatic:hover { filter: none; }
+    .chromatic:hover { filter: none; transform: none; }
   }
 
-  /* --- Scanlines (desktop only) --- */
-  @media (min-width: 1024px) {
-    .scanlines::after {
-      content: "";
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 40;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px, transparent 2px,
-        rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
-      );
-    }
-  }
-
-  /* --- HUD tooltip (CSS-only, no JS needed) --- */
+  /* --- HUD tooltip (CSS-only) --- */
   .has-tooltip { position: relative; }
   .has-tooltip .hud-tooltip {
     visibility: hidden;
@@ -206,6 +205,11 @@
     visibility: visible;
     opacity: 1;
   }
+
+  /* --- Hexagonal cell clip-path --- */
+  .hex-clip {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
 }
 
 /* =============================================
@@ -213,18 +217,18 @@
    ============================================= */
 @layer base {
   html {
-    background: #05070A;
+    background: #F0FDF4;
     overscroll-behavior: none;
     scroll-behavior: smooth;
   }
   body {
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    background-color: #05070A;
-    color: #e2e8f0;
+    background-color: #F0FDF4;
+    color: #064e3b;
   }
   .font-mono { overflow-wrap: anywhere; word-break: break-all; }
   *:focus:not(:focus-visible) { outline: none; }
-  *:focus-visible { outline: 2px solid #FF007F; outline-offset: 2px; }
-  ::selection { background: rgba(255,0,127,0.25); color: #fff; }
+  *:focus-visible { outline: 2px solid #059669; outline-offset: 2px; }
+  ::selection { background: rgba(5,150,105,0.2); color: #064e3b; }
 }

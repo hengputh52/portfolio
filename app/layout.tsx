@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
-import { Orbitron, JetBrains_Mono } from "next/font/google";
+import { Syne, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { CinematicProvider } from "@/providers/CinematicProvider";
-import { FilmGrain }         from "@/components/FilmGrain";
-import { LensFlare }         from "@/components/LensFlare";
 
-const orbitron = Orbitron({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-orbitron",
+  variable: "--font-syne",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const firaCode = Fira_Code({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-fira",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Neon-Noir Engineer",
+  title: "Portfolio — Solar-Tech Architect",
   description:
-    "Full-stack software engineering portfolio. Cloud, mobile, and AI systems built at the intersection of engineering and aesthetics.",
+    "Full-stack software engineering portfolio. Cloud, mobile, and AI systems built at the intersection of technology and nature.",
   openGraph: {
-    title: "Portfolio — Neon-Noir Engineer",
+    title: "Portfolio — Solar-Tech Architect",
     description: "Software architecture, AWS, Flutter, PostgreSQL, and AI integration.",
     type: "website",
   },
@@ -36,13 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${orbitron.variable} ${jetbrainsMono.variable} antialiased bg-obsidian text-white`}
+        className={`${syne.variable} ${firaCode.variable} antialiased bg-obsidian text-ink`}
       >
         <CinematicProvider>
-          {/* Fixed atmospheric overlay layers */}
-          <FilmGrain />
-          <LensFlare />
-          {/* TargetingReticle intentionally omitted — default cursor for professionalism */}
           {children}
         </CinematicProvider>
       </body>

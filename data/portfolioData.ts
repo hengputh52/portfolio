@@ -5,10 +5,10 @@
 export const profile = {
   name:    "YOUR NAME",
   title:   "Software Engineer",
-  tagline: "SYSTEM STATUS: ONLINE",
-  bio: `Signal detected. Identity confirmed.
+  tagline: "SOLAR GRID: OPTIMAL — GROWING",
+  bio: `Root system online. Growth confirmed.
 I design and build high-performance software systems — from cloud infrastructure and mobile apps to AI-integrated products.
-Every deployment is optimised for clarity, speed, and zero-downtime operation.`,
+Every deployment is cultivated for clarity, resilience, and a future where technology serves nature.`,
   location: "PHNOM PENH, CAMBODIA",
   email:    "hello@yourdomain.com",
   github:   "https://github.com/yourusername",
@@ -137,7 +137,8 @@ export const coreSkills: SkillItem[] = [
 
 export const techSkills: string[] = [
   "Next.js", "TypeScript", "React", "Node.js",
-  "Rust", "GraphQL", "Docker", "CI/CD", "Figma", "Go",
+  "AWS", "Flutter", "PostgreSQL",
+  "Docker", "GraphQL", "Go",
 ];
 
 // ============================================================

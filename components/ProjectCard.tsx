@@ -32,67 +32,65 @@ export function ProjectCard({
         transition: { duration: 0.2 },
       }}
     >
-      {/*
-        Aspect ratio progression (responsive):
-        Mobile (<640px) : 16:9  — comfortable height
-        Tablet  (640px) : 2:1   — transitional
-        Desktop (1280px): 21:9  — full cinematic widescreen
-      */}
       <div className="relative overflow-hidden aspect-[16/9] sm:aspect-[2/1] xl:aspect-[21/9]">
 
-        {/* Image or gradient placeholder */}
+        {/* Image or nature-gradient placeholder */}
         {hasImage ? (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={imageSrc}
             alt={`${title} preview`}
             className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            style={{ mixBlendMode: "screen" }}
           />
         ) : (
-          /* Gradient placeholder with duotone feel */
+          /* Gradient placeholder — rice field / solar horizon */
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(135deg, rgba(255,0,127,0.08) 0%, rgba(13,17,23,0.95) 45%, rgba(0,243,255,0.08) 100%)",
+              background: "linear-gradient(180deg, rgba(8,145,178,0.08) 0%, rgba(240,253,244,0.95) 35%, rgba(5,150,105,0.1) 60%, rgba(210,250,225,0.6) 100%)",
             }}
           />
         )}
 
-        {/* Subtle coordinate grid on image area */}
+        {/* Subtle organic grid */}
         <div
-          className="absolute inset-0 opacity-[0.06]"
+          className="absolute inset-0"
           style={{
+            opacity: 0.045,
             backgroundImage:
-              "linear-gradient(rgba(0,243,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(0,243,255,0.8) 1px, transparent 1px)",
+              "linear-gradient(rgba(5,150,105,1) 1px, transparent 1px), linear-gradient(90deg, rgba(5,150,105,1) 1px, transparent 1px)",
             backgroundSize: "36px 36px",
           }}
         />
 
-        {/* HUD corner brackets */}
-        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-neon-pink/50" aria-hidden="true" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-cyan/50" aria-hidden="true" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-cyan/50" aria-hidden="true" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-neon-pink/50" aria-hidden="true" />
+        {/* Corner brackets — emerald / cyan */}
+        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-k-orange/45" aria-hidden="true" />
+        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-cyan/45" aria-hidden="true" />
+        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-cyan/45" aria-hidden="true" />
+        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-k-orange/45" aria-hidden="true" />
 
         {/* Status badge */}
         <div
-          className="absolute top-3 right-3 font-mono text-[9px] tracking-widest uppercase
-                     text-neon-pink border border-neon-pink/30 px-2 py-0.5"
-          style={{ background: "rgba(13,17,23,0.85)" }}
+          className="absolute top-3 right-3 font-mono text-[9px] tracking-widest uppercase border px-2 py-0.5"
+          style={{
+            background:  "rgba(240,253,244,0.88)",
+            backdropFilter: "blur(8px)",
+            color:       "#059669",
+            borderColor: "rgba(5,150,105,0.3)",
+          }}
         >
           {status}
         </div>
 
-        {/* Hover reveal overlay — glassmorphism */}
+        {/* Hover reveal overlay — light glassmorphism */}
         <AnimatePresence>
           {scanning && (
             <motion.div
               className="absolute inset-0 flex flex-col justify-end p-4"
               style={{
-                background: "rgba(5,7,10,0.82)",
-                backdropFilter: "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
+                background:        "rgba(240,253,244,0.88)",
+                backdropFilter:    "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -103,23 +101,27 @@ export function ProjectCard({
               <motion.div
                 className="h-px mb-3"
                 style={{
-                  background: "linear-gradient(90deg, #FF007F, #00F3FF)",
+                  background:    "linear-gradient(90deg, #059669, #0891B2)",
                   transformOrigin: "left",
                 }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
               />
-              <p className="font-mono text-[9px] tracking-widest text-neon-pink uppercase mb-3">
-                [ scanning... ] {" // "} {year}
+              <p className="font-mono text-[9px] tracking-widest uppercase mb-3" style={{ color: "#059669" }}>
+                [ growing... ] {" // "} {year}
               </p>
-              {/* Tech tags — HUD metadata */}
+              {/* Tech tags */}
               <ul className="flex flex-wrap gap-1.5">
                 {tech.map((t) => (
                   <li
                     key={t}
-                    className="font-mono text-[9px] tracking-wider text-cyan/80
-                               border border-cyan/25 px-2 py-0.5"
+                    className="font-mono text-[9px] tracking-wider px-2 py-0.5"
+                    style={{
+                      color:       "rgba(8,145,178,0.85)",
+                      border:      "1px solid rgba(8,145,178,0.3)",
+                      background:  "rgba(8,145,178,0.06)",
+                    }}
                   >
                     {t}
                   </li>
@@ -133,20 +135,29 @@ export function ProjectCard({
       {/* Card footer */}
       <div className="p-4 sm:p-5">
         <h3
-          className="font-display uppercase text-white mb-1.5 leading-tight"
-          style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.2rem)", letterSpacing: "0.1em" }}
+          className="font-display uppercase mb-1.5 leading-tight"
+          style={{
+            fontSize:      "clamp(0.9rem, 2.5vw, 1.2rem)",
+            letterSpacing: "0.08em",
+            color:         "#064e3b",
+          }}
         >
           {title}
         </h3>
-        <p className="font-mono text-[0.78rem] text-white/40 leading-relaxed line-clamp-2 mb-4">
+        <p
+          className="font-mono text-[0.78rem] leading-relaxed line-clamp-2 mb-4"
+          style={{ color: "rgba(6,78,59,0.55)" }}
+        >
           {description}
         </p>
         <a
           href={href}
           className="chromatic inline-flex items-center gap-2 font-mono text-[9px]
-                     tracking-widest text-neon-pink uppercase
-                     hover:text-white transition-colors duration-200 min-h-[44px] py-2"
-          style={{ textShadow: "0 0 8px rgba(255,0,127,0.5)" }}
+                     tracking-widest uppercase min-h-[44px] py-2 transition-colors duration-200"
+          style={{
+            color:      "#059669",
+            textShadow: "0 0 8px rgba(5,150,105,0.35)",
+          }}
         >
           VIEW PROJECT →
         </a>
