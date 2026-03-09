@@ -1,105 +1,173 @@
-// Single source of truth for all portfolio content.
-// Edit only this file to update your portfolio.
+// ============================================================
+// Single source of truth — edit only this file.
+// ============================================================
 
 export const profile = {
-  name: "YOUR NAME",
-  title: "Full-Stack Engineer",
-  tagline: "ARCHITECT // SYSTEM ONLINE",
-  bio: `Baseline established. Memory implants verified.
-I design and build high-performance digital experiences at the intersection of engineering and aesthetics.
-Every system I deploy is optimised for clarity, speed, and impact.`,
-  location: "EARTH",
-  email: "hello@yourdomain.com",
-  github: "https://github.com/yourusername",
+  name:    "YOUR NAME",
+  title:   "Software Engineer",
+  tagline: "SYSTEM STATUS: ONLINE",
+  bio: `Signal detected. Identity confirmed.
+I design and build high-performance software systems — from cloud infrastructure and mobile apps to AI-integrated products.
+Every deployment is optimised for clarity, speed, and zero-downtime operation.`,
+  location: "PHNOM PENH, CAMBODIA",
+  email:    "hello@yourdomain.com",
+  github:   "https://github.com/yourusername",
   linkedin: "https://linkedin.com/in/yourusername",
 };
 
+// ============================================================
+// EXPERIENCE
+// ============================================================
 export const experiences = [
   {
-    id: "exp-1",
-    date: "2023 — PRESENT",
-    company: "COMPANY_NAME",
-    title: "Senior Frontend Engineer",
-    description:
-      "Led development of a real-time data dashboard serving 50k+ daily users. Reduced bundle size by 40% via code-splitting and lazy loading.",
-    tech: ["Next.js", "TypeScript", "GraphQL"],
+    id:          "exp-1",
+    date:        "2023 — PRESENT",
+    company:     "COMPANY_NAME",
+    title:       "Senior Software Engineer",
+    description: "Led architecture of a cloud-native SaaS platform on AWS serving 50k+ daily users. Designed multi-region failover with ALB, EC2, and RDS PostgreSQL. Reduced infra cost 35% via reserved instances and S3 lifecycle policies.",
+    tech:        ["AWS", "Next.js", "PostgreSQL", "TypeScript"],
+    imageSrc:    "",
   },
   {
-    id: "exp-2",
-    date: "2021 — 2023",
-    company: "STUDIO_ALPHA",
-    title: "Full-Stack Developer",
-    description:
-      "Architected a multi-tenant SaaS platform from zero to 10k users. Designed REST API handling 2M+ daily requests with 99.9% uptime.",
-    tech: ["React", "Node.js", "PostgreSQL", "AWS"],
+    id:          "exp-2",
+    date:        "2021 — 2023",
+    company:     "STUDIO_ALPHA",
+    title:       "Full-Stack & Mobile Developer",
+    description: "Built cross-platform mobile app in Flutter/Dart (iOS + Android, 10k+ installs). Integrated AI recommendation engine reducing churn 22%. Designed normalized PostgreSQL schema handling 2M+ daily queries.",
+    tech:        ["Flutter", "Dart", "Node.js", "PostgreSQL", "AI/ML"],
+    imageSrc:    "",
   },
   {
-    id: "exp-3",
-    date: "2019 — 2021",
-    company: "AGENCY_CORP",
-    title: "Frontend Developer",
-    description:
-      "Developed pixel-perfect, accessible web applications for Fortune 500 clients. Improved core web vitals scores across all projects.",
-    tech: ["React", "CSS-in-JS", "Figma"],
+    id:          "exp-3",
+    date:        "2019 — 2021",
+    company:     "AGENCY_CORP",
+    title:       "Frontend Developer",
+    description: "Delivered pixel-perfect web applications for enterprise clients. Integrated AWS Lambda for serverless operations. Improved core web vitals across all projects by 40%.",
+    tech:        ["React", "AWS Lambda", "TypeScript", "Figma"],
+    imageSrc:    "",
   },
 ];
 
+// ============================================================
+// VOLUNTEER
+// ============================================================
+export const volunteers = [
+  {
+    id:          "vol-1",
+    date:        "2022 — PRESENT",
+    org:         "TECH_FOR_GOOD",
+    title:       "Volunteer Software Architect",
+    description: "Designed and deployed a free digital platform for NGOs in Southeast Asia, enabling 30+ organizations to manage volunteers and collect offline data using Flutter.",
+    tech:        ["Flutter", "Firebase", "PostgreSQL"],
+    imageSrc:    "",
+  },
+  {
+    id:          "vol-2",
+    date:        "2020 — 2022",
+    org:         "CODE_BRIDGE",
+    title:       "Coding Mentor",
+    description: "Mentored 50+ students from underserved communities in web development. Curriculum covered JavaScript, cloud fundamentals, and AWS deployment.",
+    tech:        ["JavaScript", "AWS", "Education"],
+    imageSrc:    "",
+  },
+];
+
+// ============================================================
+// PROJECTS
+// ============================================================
 export const projects = [
   {
-    id: "proj-1",
-    title: "NEURAL_GRID",
-    description:
-      "A real-time collaborative design tool with AI-assisted layout generation. Built on WebRTC and a custom CRDT engine.",
-    tech: ["Next.js", "WebRTC", "Rust", "WebAssembly"],
-    imageSrc: "/projects/neural-grid.jpg",
-    href: "#",
-    year: "2024",
-    status: "DEPLOYED",
+    id:       "proj-1",
+    title:    "CLOUD_MATRIX",
+    description: "AWS-native multi-tenant SaaS platform. Auto-scaling EC2 fleet behind ALB, Aurora PostgreSQL with read replicas, S3, and Lambda for async jobs.",
+    tech:     ["AWS EC2", "Aurora PostgreSQL", "Lambda", "Next.js"],
+    imageSrc: "",
+    href:     "#",
+    year:     "2024",
+    status:   "DEPLOYED",
   },
   {
-    id: "proj-2",
-    title: "VOID_SCANNER",
-    description:
-      "An open-source CLI tool for scanning and visualising dependency graphs in monorepos. 2k+ GitHub stars.",
-    tech: ["Node.js", "TypeScript", "D3.js"],
-    imageSrc: "/projects/void-scanner.jpg",
-    href: "#",
-    year: "2023",
-    status: "OPEN_SOURCE",
+    id:       "proj-2",
+    title:    "FLUTTER_NEXUS",
+    description: "Cross-platform mobile app (iOS + Android) in Flutter/Dart. Offline-first SQLite sync, AI recommendation engine, 10k+ active users.",
+    tech:     ["Flutter", "Dart", "SQLite", "AI/ML"],
+    imageSrc: "",
+    href:     "#",
+    year:     "2023",
+    status:   "LIVE",
   },
   {
-    id: "proj-3",
-    title: "SIGNAL_OS",
-    description:
-      "A headless CMS with a visual component builder and one-click edge deployment to 50+ CDN regions.",
-    tech: ["React", "Go", "Cloudflare Workers"],
-    imageSrc: "/projects/signal-os.jpg",
-    href: "#",
-    year: "2023",
-    status: "IN_FIELD",
+    id:       "proj-3",
+    title:    "DATA_ARCHITECT",
+    description: "Relational database design tool for visualising and normalising PostgreSQL schemas at scale. Supports 100+ table diagrams with query planner hints.",
+    tech:     ["PostgreSQL", "TypeScript", "D3.js", "Node.js"],
+    imageSrc: "",
+    href:     "#",
+    year:     "2023",
+    status:   "OPEN_SOURCE",
   },
   {
-    id: "proj-4",
-    title: "ECHO_PROTOCOL",
-    description:
-      "End-to-end encrypted messaging layer for internal enterprise tools. Zero-knowledge architecture.",
-    tech: ["TypeScript", "Rust", "WebCrypto"],
-    imageSrc: "/projects/echo-protocol.jpg",
-    href: "#",
-    year: "2022",
-    status: "CLASSIFIED",
+    id:       "proj-4",
+    title:    "AI_INTEGRATION_LAYER",
+    description: "Modular AI middleware connecting LLMs to enterprise APIs. Supports streaming, context management, and tool-use with OpenAI and local Ollama models.",
+    tech:     ["TypeScript", "OpenAI API", "Ollama", "PostgreSQL"],
+    imageSrc: "",
+    href:     "#",
+    year:     "2024",
+    status:   "IN_FIELD",
   },
 ];
 
-export const skills = [
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Rust",
-  "PostgreSQL",
-  "GraphQL",
-  "AWS",
-  "Figma",
-  "CI/CD",
+// ============================================================
+// SKILLS
+// ============================================================
+export interface SkillItem {
+  name:    string;
+  tooltip: string;
+  level:   number; // 0–100 for diagnostic bar
+}
+
+export const coreSkills: SkillItem[] = [
+  { name: "Software Architecture",        tooltip: "Microservices, DDD, Event-driven, API design, Hexagonal", level: 92 },
+  { name: "Cloud Infrastructure (AWS)",   tooltip: "EC2, S3, Lambda, RDS, ALB, VPC, CloudFront, IAM",        level: 88 },
+  { name: "Flutter / Dart Mobile",        tooltip: "iOS & Android, BLoC, Provider, SQLite, Flavors, CI/CD",  level: 85 },
+  { name: "PostgreSQL (Relational DB)",   tooltip: "Schema design, indexing, EXPLAIN, replication, pgvector", level: 87 },
+  { name: "AI Integration",               tooltip: "OpenAI, Ollama, LangChain, RAG, embeddings, tool-use",   level: 80 },
 ];
+
+export const techSkills: string[] = [
+  "Next.js", "TypeScript", "React", "Node.js",
+  "Rust", "GraphQL", "Docker", "CI/CD", "Figma", "Go",
+];
+
+// ============================================================
+// LANGUAGES
+// ============================================================
+export interface LanguageItem {
+  name:        string;
+  level:       string;
+  proficiency: number; // 0–100
+}
+
+export const languages: LanguageItem[] = [
+  { name: "English", level: "NATIVE_FLUENCY",  proficiency: 100 },
+  { name: "Khmer",   level: "NATIVE_FLUENCY",  proficiency: 100 },
+];
+
+// ============================================================
+// COMMIT GRAPH (52 weeks × 7 days)
+// Deterministic seed using Math.sin — replace with GitHub GraphQL API.
+// ============================================================
+export function generateCommitData(): number[][] {
+  const weeks: number[][] = [];
+  for (let w = 0; w < 52; w++) {
+    const days: number[] = [];
+    for (let d = 0; d < 7; d++) {
+      const seed = Math.abs(Math.sin(w * 31 + d * 17) * 10000);
+      const frac = seed - Math.floor(seed);
+      days.push(frac < 0.4 ? 0 : frac < 0.60 ? 1 : frac < 0.78 ? 2 : frac < 0.92 ? 3 : 4);
+    }
+    weeks.push(days);
+  }
+  return weeks;
+}

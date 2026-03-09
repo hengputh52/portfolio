@@ -1,37 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  /* COLORS */
-  --color-obsidian:  #050505;
-  --color-k-orange:  #FF8C00;
-  --color-dune-gold: #C5A059;
-  --color-fog:       #1A1A1A;
+  /* =============================================
+     COLOR PALETTE — Neon-Noir / Blade Runner 2049
+     ============================================= */
+  --color-obsidian:  #05070A;
+  --color-k-orange:  #FF007F;   /* Neon Pink  — primary accent  */
+  --color-dune-gold: #00F3FF;   /* Electric Cyan — secondary accent */
+  --color-neon-pink: #FF007F;
+  --color-cyan:      #00F3FF;
+  --color-fog:       #0D1117;
 
-  /* FLUID TYPE SCALE — scales smoothly across all screen sizes */
+  /* =============================================
+     FLUID TYPE SCALE
+     ============================================= */
   --text-hero:     clamp(2.75rem, 8vw + 0.5rem, 7.5rem);
   --text-display:  clamp(1.875rem, 5vw + 0.5rem, 5rem);
   --text-section:  clamp(1.25rem, 3vw + 0.25rem, 2.5rem);
   --text-mono-lg:  clamp(0.875rem, 1.5vw, 1.25rem);
   --text-hud:      clamp(0.625rem, 1vw, 0.875rem);
 
-  /* FONTS — CSS variables injected by next/font in layout.tsx */
-  --font-display: var(--font-syncopate), "Syncopate", sans-serif;
+  /* FONTS */
+  --font-display: var(--font-orbitron), "Orbitron", sans-serif;
   --font-mono:    var(--font-jetbrains), "JetBrains Mono", monospace;
 
   /* LETTER SPACING */
-  --tracking-display: 0.15em;
+  --tracking-display: 0.12em;
   --tracking-hud:     0.25em;
 
-  /* ANIMATIONS */
-  --animate-flicker:     flicker 0.12s infinite;
+  /* =============================================
+     ANIMATIONS
+     ============================================= */
+  --animate-flicker:     neon-flicker 3.5s infinite linear;
   --animate-pulse-hud:   pulse-hud 2.5s ease-in-out infinite;
   --animate-grain-shift: grain-shift 0.5s steps(1) infinite;
   --animate-blink:       blink 1s step-end infinite;
+  --animate-float:       float 6s ease-in-out infinite;
+  --animate-glow-pulse:  glow-pulse 2s ease-in-out infinite;
+  --animate-scanline:    scan-line 5s linear infinite;
 }
 
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.7; }
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+@keyframes neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%                           { opacity: 0.08; }
+  55%                                { opacity: 0.25; }
 }
 @keyframes pulse-hud {
   0%, 100% { opacity: 0.4; transform: scale(1); }
@@ -48,9 +63,24 @@
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-18px) rotate(1deg); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+@keyframes scan-line {
+  0%   { transform: translateY(-4px); }
+  100% { transform: translateY(100vh); }
+}
 
+/* =============================================
+   UTILITIES
+   ============================================= */
 @layer utilities {
-  /* Fluid section padding */
+  /* --- Fluid section padding --- */
   .section-padding {
     padding-left:   clamp(1rem, 5vw, 6rem);
     padding-right:  clamp(1rem, 5vw, 6rem);
@@ -61,20 +91,18 @@
     margin-right: auto;
   }
 
-  /* iOS-safe full-height — dvh accounts for mobile browser chrome */
+  /* --- iOS-safe full height --- */
   .h-screen-safe     { height: 100dvh; }
   .min-h-screen-safe { min-height: 100svh; }
 
-  /* Film grain using inline SVG data URI — no external file needed */
+  /* --- Film grain (inline SVG, no external file) --- */
   .film-grain {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 50;
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 50;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 256px 256px;
-    opacity: 0.045;
+    opacity: 0.04;
     mix-blend-mode: overlay;
     animation: grain-shift 0.5s steps(1) infinite;
   }
@@ -82,53 +110,121 @@
     .film-grain { animation: none; opacity: 0.02; }
   }
 
-  /* Chromatic aberration on hover — silently disabled on touch */
+  /* --- Glassmorphism card --- */
+  .glass-card {
+    background: rgba(13, 17, 23, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 0, 127, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(255, 0, 127, 0.04),
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .glass-card:hover {
+    border-color: rgba(255, 0, 127, 0.32);
+    box-shadow:
+      0 0 20px rgba(255, 0, 127, 0.15),
+      0 0 40px rgba(255, 0, 127, 0.07),
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .glass-card-cyan {
+    background: rgba(13, 17, 23, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  /* --- Neon glow text --- */
+  .text-glow-pink {
+    text-shadow:
+      0 0 6px rgba(255,0,127,1),
+      0 0 16px rgba(255,0,127,0.7),
+      0 0 35px rgba(255,0,127,0.4);
+  }
+  .text-glow-cyan {
+    text-shadow:
+      0 0 6px rgba(0,243,255,1),
+      0 0 16px rgba(0,243,255,0.7),
+      0 0 35px rgba(0,243,255,0.4);
+  }
+
+  /* --- Neon glow borders / boxes --- */
+  .glow-pink {
+    box-shadow: 0 0 10px rgba(255,0,127,0.4), 0 0 25px rgba(255,0,127,0.2);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 10px rgba(0,243,255,0.35), 0 0 25px rgba(0,243,255,0.15);
+  }
+
+  /* --- Chromatic aberration on hover (desktop only) --- */
   .chromatic { filter: none; transition: filter 0.2s ease; }
   .chromatic:hover {
     filter:
-      drop-shadow(-1.5px 0 0 rgba(255, 0, 60, 0.45))
-      drop-shadow( 1.5px 0 0 rgba(0, 180, 255, 0.45));
+      drop-shadow(-1.5px 0 0 rgba(255, 0, 127, 0.55))
+      drop-shadow( 1.5px 0 0 rgba(0, 243, 255, 0.55));
   }
   @media (pointer: coarse) {
     .chromatic:hover { filter: none; }
   }
 
-  /* Scanlines overlay — desktop only to avoid performance cost on mobile */
+  /* --- Scanlines (desktop only) --- */
   @media (min-width: 1024px) {
     .scanlines::after {
       content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 40;
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 40;
       background: repeating-linear-gradient(
         to bottom,
-        transparent 0px,
-        transparent 2px,
-        rgba(0, 0, 0, 0.025) 2px,
-        rgba(0, 0, 0, 0.025) 4px
+        transparent 0px, transparent 2px,
+        rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
       );
     }
   }
+
+  /* --- HUD tooltip (CSS-only, no JS needed) --- */
+  .has-tooltip { position: relative; }
+  .has-tooltip .hud-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .has-tooltip:hover .hud-tooltip,
+  .has-tooltip:focus-within .hud-tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
+/* =============================================
+   BASE RESETS
+   ============================================= */
 @layer base {
   html {
-    background: #050505;
+    background: #05070A;
     overscroll-behavior: none;
     scroll-behavior: smooth;
   }
   body {
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    background-color: #050505;
-    color: #ededed;
+    background-color: #05070A;
+    color: #e2e8f0;
   }
-  /* Prevent mono font text overflow on narrow screens */
-  .overflow-wrap-anywhere {
-    overflow-wrap: anywhere;
-    word-break: break-all;
-  }
+  .font-mono { overflow-wrap: anywhere; word-break: break-all; }
   *:focus:not(:focus-visible) { outline: none; }
-  *:focus-visible { outline: 2px solid #FF8C00; outline-offset: 2px; }
+  *:focus-visible { outline: 2px solid #FF007F; outline-offset: 2px; }
+  ::selection { background: rgba(255,0,127,0.25); color: #fff; }
 }

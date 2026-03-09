@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PulsingIrisSVG } from "@/components/PulsingIrisSVG";
-import { profile, skills } from "@/data/portfolioData";
+import { profile }        from "@/data/portfolioData";
 import { useMotionConfig } from "@/hooks/useMotionConfig";
 
 export function About() {
@@ -10,25 +10,23 @@ export function About() {
 
   return (
     <section id="about" className="section-padding" aria-label="About">
-      {/* Section header */}
       <motion.p
-        className="font-mono text-[10px] tracking-widest uppercase text-k-orange/50 mb-12 sm:mb-16"
+        className="font-mono text-[10px] tracking-widest uppercase text-neon-pink/50 mb-12 sm:mb-16"
         initial={disabled ? {} : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={transition}
       >
-        SYS_MODULE: 03 // SUBJECT_PROFILE
+        SYS_MODULE: 03A {" // "} SUBJECT_PROFILE
       </motion.p>
 
       {/*
-        Two-column layout:
-        - Mobile:  single column, SVG centered above text
-        - md+:     SVG on left (1fr), text on right (1.6fr)
+        Mobile:  single column, SVG centred above text
+        md+:     SVG left (1fr), text right (1.6fr)
       */}
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-10 md:gap-20 items-center">
 
-        {/* SVG column */}
+        {/* Pulsing iris */}
         <motion.div
           className="w-full max-w-[220px] mx-auto md:max-w-none md:mx-0"
           initial={disabled ? {} : { opacity: 0, scale: 0.9 }}
@@ -39,7 +37,7 @@ export function About() {
           <PulsingIrisSVG />
         </motion.div>
 
-        {/* Text column */}
+        {/* Narrative text */}
         <motion.div
           className="space-y-5 text-center md:text-left"
           initial={disabled ? {} : { opacity: 0, x: 20 }}
@@ -48,42 +46,48 @@ export function About() {
           transition={{ ...transition, delay: disabled ? 0 : 0.2 }}
         >
           <h2
-            className="font-display uppercase text-dune-gold leading-tight"
-            style={{ fontSize: "clamp(1.875rem, 5vw + 0.5rem, 5rem)", letterSpacing: "0.15em" }}
+            className="font-display uppercase leading-tight"
+            style={{
+              fontSize:     "clamp(1.875rem, 5vw + 0.5rem, 5rem)",
+              letterSpacing: "0.12em",
+              color:         "#00F3FF",
+              textShadow:    "0 0 20px rgba(0,243,255,0.3)",
+            }}
           >
             ABOUT
           </h2>
 
-          <div className="h-px w-16 bg-k-orange/40 mx-auto md:mx-0" />
+          <div className="h-px w-16 mx-auto md:mx-0"
+               style={{ background: "linear-gradient(90deg, #FF007F, #00F3FF)" }} />
 
-          <p className="font-mono text-white/55 leading-loose whitespace-pre-line"
-             style={{ fontSize: "clamp(0.8rem, 1.5vw, 1rem)" }}>
+          <p
+            className="font-mono text-white/50 leading-loose whitespace-pre-line"
+            style={{ fontSize: "clamp(0.8rem, 1.5vw, 1rem)" }}
+          >
             {profile.bio}
           </p>
 
-          <div className="pt-2">
-            <p className="font-mono text-[10px] tracking-widest text-k-orange/40 uppercase mb-3">
-              SKILL_MATRIX:
+          {/* Voight-Kampff subject metadata */}
+          <div
+            className="glass-card-cyan p-4 sm:p-5 text-left"
+            style={{ marginTop: "1.5rem" }}
+          >
+            <p className="font-mono text-[9px] tracking-widest uppercase text-cyan/40 mb-3">
+              BASELINE_DATA:
             </p>
-            <ul className="flex flex-wrap gap-2 justify-center md:justify-start">
-              {skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="font-mono text-[10px] tracking-wider uppercase
-                             border border-dune-gold/25 text-dune-gold/60
-                             px-3 py-1 hover:border-dune-gold/50 hover:text-dune-gold
-                             transition-colors duration-200"
-                >
-                  {skill}
-                </li>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              {[
+                { label: "LOCATION",  value: profile.location },
+                { label: "STATUS",    value: "AVAILABLE" },
+                { label: "CLEARANCE", value: "FULL_STACK" },
+                { label: "SIGNAL",    value: "ONLINE" },
+              ].map(({ label, value }) => (
+                <div key={label}>
+                  <p className="font-mono text-[8px] tracking-widest uppercase text-cyan/30">{label}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-neon-pink/70">{value}</p>
+                </div>
               ))}
-            </ul>
-          </div>
-
-          {/* Baseline data */}
-          <div className="pt-2 font-mono text-[10px] tracking-widest uppercase space-y-1 text-k-orange/30">
-            <p>LOCATION: {profile.location}</p>
-            <p>STATUS: AVAILABLE_FOR_WORK</p>
+            </div>
           </div>
         </motion.div>
       </div>

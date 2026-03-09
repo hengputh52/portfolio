@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Syncopate, JetBrains_Mono } from "next/font/google";
+import { Orbitron, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CinematicProvider } from "@/providers/CinematicProvider";
-import { TargetingReticle } from "@/components/TargetingReticle";
-import { FilmGrain } from "@/components/FilmGrain";
-import { LensFlare } from "@/components/LensFlare";
+import { FilmGrain }         from "@/components/FilmGrain";
+import { LensFlare }         from "@/components/LensFlare";
 
-const syncopate = Syncopate({
-  weight: ["400", "700"],
+const orbitron = Orbitron({
   subsets: ["latin"],
-  variable: "--font-syncopate",
+  variable: "--font-orbitron",
   display: "swap",
 });
 
@@ -20,12 +18,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Cinematic Architect",
+  title: "Portfolio — Neon-Noir Engineer",
   description:
-    "Full-stack engineering portfolio. High-performance digital experiences built at the intersection of engineering and aesthetics.",
+    "Full-stack software engineering portfolio. Cloud, mobile, and AI systems built at the intersection of engineering and aesthetics.",
   openGraph: {
-    title: "Portfolio — Cinematic Architect",
-    description: "Full-stack engineering portfolio.",
+    title: "Portfolio — Neon-Noir Engineer",
+    description: "Software architecture, AWS, Flutter, PostgreSQL, and AI integration.",
     type: "website",
   },
 };
@@ -38,13 +36,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${syncopate.variable} ${jetbrainsMono.variable} antialiased bg-obsidian text-white`}
+        className={`${orbitron.variable} ${jetbrainsMono.variable} antialiased bg-obsidian text-white`}
       >
         <CinematicProvider>
-          {/* Fixed overlay layers — rendered above all page content */}
+          {/* Fixed atmospheric overlay layers */}
           <FilmGrain />
           <LensFlare />
-          <TargetingReticle />
+          {/* TargetingReticle intentionally omitted — default cursor for professionalism */}
           {children}
         </CinematicProvider>
       </body>
