@@ -5,13 +5,13 @@
 export const profile = {
   name:    "Meng Heng",
   title:   "Software Engineer",
-  tagline: "SOLAR GRID: OPTIMAL — GROWING",
+  tagline: "Cambodia Academy of Digital Technology Student",
   bio: `Root system online. Growth confirmed.
 I design and build high-performance software systems — from cloud infrastructure and mobile apps to AI-integrated products.
 Every deployment is cultivated for clarity, resilience, and a future where technology serves nature.`,
   location: "PHNOM PENH, CAMBODIA",
-  email:    "hello@yourdomain.com",
-  github:   "https://github.com/yourusername",
+  email:    "mheng770@gmail.com",
+  github:   "https://github.com/hengputh52",
   linkedin: "https://linkedin.com/in/yourusername",
 };
 

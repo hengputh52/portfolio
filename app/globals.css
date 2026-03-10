@@ -217,7 +217,7 @@
    ============================================= */
 @layer base {
   html {
-    background: #F0FDF4;
+    background: transparent;
     overscroll-behavior: none;
     scroll-behavior: smooth;
   }
@@ -227,6 +227,7 @@
     background-color: #F0FDF4;
     color: #064e3b;
   }
+
   
   .font-mono { overflow-wrap: anywhere; word-break: break-all; }
   *:focus:not(:focus-visible) { outline: none; }

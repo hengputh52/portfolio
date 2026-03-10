@@ -183,7 +183,7 @@ export function Hero() {
       <div
       className="absolute inset-0 pointer-events-none"
       style={{
-        backgroundImage: `url('/solarpunk.jpg')`,
+        backgroundImage: `url('/castle_solar_punk.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -210,7 +210,7 @@ export function Hero() {
         style={{
           opacity: 0.035,
           backgroundImage:
-            "linear-gradient(rgba(5,150,105,1) 1px, transparent 1px), linear-gradient(90deg, rgba(5,150,105,1) 1px, transparent 1px)",
+            "linear-gradient(rgb(255, 255, 255) 5px, transparent 1px), linear-gradient(90deg, rgb(189, 229, 216) 5px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
       />
@@ -241,8 +241,8 @@ export function Hero() {
 
       {/* Top HUD bar */}
       <motion.div
-        className="absolute top-6 left-1/2 -translate-x-1/2 font-mono text-[15px] tracking-widest uppercase hidden sm:flex items-center gap-3"
-        style={{ color: "rgba(5,150,105,0.5)", textShadow: "0 0 8px rgba(5,150,105,0.3)" }}
+        className="absolute top-6 left-1/2 -translate-x-1/2 font-mono text-[9px] tracking-widest uppercase hidden sm:flex items-center gap-3"
+        style={{ color: "#059669", textShadow: "0 0 8px rgba(5,150,105,0.3)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
@@ -316,8 +316,8 @@ export function Hero() {
             <p
               className="font-mono uppercase tracking-widest"
               style={{
-                fontSize: "clamp(0.75rem, 1.8vw, 1rem)",
-                letterSpacing: "0.28em",
+                fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
+                fontWeight: "bold",
                 color: "#ffffff",
                 textShadow: "0 0 10px rgba(5,150,105,0.5), 0 4px 8px rgba(0,0,0,0.3)",
               }}
@@ -331,6 +331,7 @@ export function Hero() {
             className="font-mono mb-8 sm:mb-10 max-w-sm mx-auto"
             style={{
               fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
+              fontWeight: "bold",
               color: "#ffffff",
               textShadow: "0 0 10px rgba(5,150,105,0.4), 0 4px 8px rgba(0,0,0,0.3)",
             }}
