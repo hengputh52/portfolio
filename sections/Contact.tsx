@@ -274,7 +274,7 @@ export function Contact() {
           </p>
           {[
             { label: "Email",    value: profile.email,                     href: `mailto:${profile.email}` },
-            { label: "GitHub",   value: "github.com/yourusername",         href: profile.github },
+            { label: "GitHub",   value: "github.com/hengput52",         href: profile.github },
             { label: "LinkedIn", value: "linkedin.com/in/yourusername",    href: profile.linkedin },
           ].map((link) => (
             <div key={link.label}>

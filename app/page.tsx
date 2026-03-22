@@ -37,6 +37,10 @@ export default function Home() {
       <Projects />
       <Divider from="emerald" />
 
+      {/* 05 — Experience & Volunteer */}
+      <Experience />
+      <Divider from="cyan" />
+
       {/* 03 — Skills & Energy Grid */}
       <Skills />
       <Divider from="cyan" />
@@ -45,9 +49,6 @@ export default function Home() {
       <About />
       <Divider from="emerald" />
 
-      {/* 05 — Experience & Volunteer */}
-      <Experience />
-      <Divider from="cyan" />
 
       {/* 06 — Contact */}
       <Contact />

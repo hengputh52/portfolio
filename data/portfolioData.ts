@@ -1,3 +1,5 @@
+import angkor_guide_thuminal from '@/public/angkor_guide_thumnail.jpg'
+
 // ============================================================
 // Single source of truth — edit only this file.
 // ============================================================
@@ -21,31 +23,14 @@ Every deployment is cultivated for clarity, resilience, and a future where techn
 export const experiences = [
   {
     id:          "exp-1",
-    date:        "2023 — PRESENT",
-    company:     "COMPANY_NAME",
-    title:       "Senior Software Engineer",
-    description: "Led architecture of a cloud-native SaaS platform on AWS serving 50k+ daily users. Designed multi-region failover with ALB, EC2, and RDS PostgreSQL. Reduced infra cost 35% via reserved instances and S3 lifecycle policies.",
-    tech:        ["AWS", "Next.js", "PostgreSQL", "TypeScript"],
+    date:        "June 2025 - December 2026",
+    company:     "EdTech Cambodia (Minstiry of Education, Youth and Sport)",
+    title:       "UX/UI and Web Developer",
+    description: " worked as a UX/UI Designer and Web Developer, working dashboard and website design.",
+    tech:        ["React JS", "Node JS", "MongoDB", "TypeScript"],
     imageSrc:    "",
   },
-  {
-    id:          "exp-2",
-    date:        "2021 — 2023",
-    company:     "STUDIO_ALPHA",
-    title:       "Full-Stack & Mobile Developer",
-    description: "Built cross-platform mobile app in Flutter/Dart (iOS + Android, 10k+ installs). Integrated AI recommendation engine reducing churn 22%. Designed normalized PostgreSQL schema handling 2M+ daily queries.",
-    tech:        ["Flutter", "Dart", "Node.js", "PostgreSQL", "AI/ML"],
-    imageSrc:    "",
-  },
-  {
-    id:          "exp-3",
-    date:        "2019 — 2021",
-    company:     "AGENCY_CORP",
-    title:       "Frontend Developer",
-    description: "Delivered pixel-perfect web applications for enterprise clients. Integrated AWS Lambda for serverless operations. Improved core web vitals across all projects by 40%.",
-    tech:        ["React", "AWS Lambda", "TypeScript", "Figma"],
-    imageSrc:    "",
-  },
+
 ];
 
 // ============================================================
@@ -54,21 +39,21 @@ export const experiences = [
 export const volunteers = [
   {
     id:          "vol-1",
-    date:        "2022 — PRESENT",
-    org:         "TECH_FOR_GOOD",
-    title:       "Volunteer Software Architect",
-    description: "Designed and deployed a free digital platform for NGOs in Southeast Asia, enabling 30+ organizations to manage volunteers and collect offline data using Flutter.",
-    tech:        ["Flutter", "Firebase", "PostgreSQL"],
-    imageSrc:    "",
+    date:        "December 2025",
+    org:         "Digital Government Forum",
+    title:       "Public Relation",
+    description: "Participating in making a video about the event",
+    tech:        [],
+    imageSrc:    "/dgf_gor.jpg",
   },
   {
     id:          "vol-2",
-    date:        "2020 — 2022",
-    org:         "CODE_BRIDGE",
-    title:       "Coding Mentor",
-    description: "Mentored 50+ students from underserved communities in web development. Curriculum covered JavaScript, cloud fundamentals, and AWS deployment.",
-    tech:        ["JavaScript", "AWS", "Education"],
-    imageSrc:    "",
+    date:        "November 2025",
+    org:         "VBNK",
+    title:       "Youth Digital Storytelling & Community Engagement",
+    description: "Participate in workshop",
+    tech:        [],
+    imageSrc:    "/digital_story.jpg",
   },
 ];
 
@@ -76,42 +61,52 @@ export const volunteers = [
 // PROJECTS
 // ============================================================
 export const projects = [
-  {
+    {
     id:       "proj-1",
-    title:    "CLOUD_MATRIX",
-    description: "AWS-native multi-tenant SaaS platform. Auto-scaling EC2 fleet behind ALB, Aurora PostgreSQL with read replicas, S3, and Lambda for async jobs.",
-    tech:     ["AWS EC2", "Aurora PostgreSQL", "Lambda", "Next.js"],
-    imageSrc: "",
+    title:    "Das Tern",
+    description: "DasTern is now a fully functional mobile app that helps patients take their medicine correctly. By combining local OCR and smart AI, it instantly converts paper prescriptions into digital schedules",
+    tech:     ["Flutter", "Nest JS", "PostgreSQL", "Docker"],
+    imageSrc: "/das-tern.jpg",
     href:     "#",
     year:     "2024",
     status:   "DEPLOYED",
   },
   {
     id:       "proj-2",
-    title:    "FLUTTER_NEXUS",
-    description: "Cross-platform mobile app (iOS + Android) in Flutter/Dart. Offline-first SQLite sync, AI recommendation engine, 10k+ active users.",
-    tech:     ["Flutter", "Dart", "SQLite", "AI/ML"],
-    imageSrc: "",
+    title:    "Angkor Guide",
+    description: "Angkor Guide is offline tour application created for international tourists and people that is interested in historical temple. this app acts as tour guide while visiting temple.",
+    tech:     ["Flutter"],
+    imageSrc: "/angkor_guide_1.jpg",
+    href:     "#",
+    year:     "2024",
+    status:   "DEPLOYED",
+  },
+  {
+    id:       "proj-3",
+    title:    "PSA Book",
+    description: "PSABook is a website that lets people buy and sell second-hand books.  The goal is to make reading more accessible and promote book reuse in the local community.",
+    tech:     ["React JS", "Node JS", "mySql"],
+    imageSrc: "/psa_book.jpg",
     href:     "#",
     year:     "2023",
     status:   "LIVE",
   },
   {
-    id:       "proj-3",
-    title:    "DATA_ARCHITECT",
-    description: "Relational database design tool for visualising and normalising PostgreSQL schemas at scale. Supports 100+ table diagrams with query planner hints.",
-    tech:     ["PostgreSQL", "TypeScript", "D3.js", "Node.js"],
-    imageSrc: "",
+    id:       "proj-4",
+    title:    "TH Movie",
+    description: "Streaming Movie Website",
+    tech:     ["HTML", "CSS"],
+    imageSrc: "/th-movie.jpg",
     href:     "#",
     year:     "2023",
     status:   "OPEN_SOURCE",
   },
   {
-    id:       "proj-4",
-    title:    "AI_INTEGRATION_LAYER",
-    description: "Modular AI middleware connecting LLMs to enterprise APIs. Supports streaming, context management, and tool-use with OpenAI and local Ollama models.",
-    tech:     ["TypeScript", "OpenAI API", "Ollama", "PostgreSQL"],
-    imageSrc: "",
+    id:       "proj-5",
+    title:    "Delivery Guy Game",
+    description: "Delivery Guy is a casual time-challenge game where players control a delivery driver in a busy city. The main objective is to deliver food orders to customers before time runs out, while avoiding traffic and police.",
+    tech:     ["Unity"],
+    imageSrc: "/delivery_guy.jpg",
     href:     "#",
     year:     "2024",
     status:   "IN_FIELD",

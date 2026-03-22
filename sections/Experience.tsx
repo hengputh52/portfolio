@@ -207,7 +207,7 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
   const { disabled, transition } = useMotionConfig();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-14">
       {items.map((item, i) => (
         <motion.div
           key={item.id}
@@ -236,9 +236,18 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
           />
 
           <div
-            className="glass-card p-6 relative z-10"
-            style={{ borderLeft: "3px solid rgba(8,145,178,0.4)" }}
+            className="glass-card p-8 lg:p-10 relative z-10 overflow-hidden"
+            style={{
+              borderLeft: "3px solid rgba(8,145,178,0.4)",
+              backgroundImage: item.imageSrc ? `url(${item.imageSrc})` : undefined,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              minHeight: "360px",
+              
+            }}
           >
+            {item.imageSrc && (<div className="absolute inset-0 z-0" style={{background: "rgba(255,255,255,0.1)"}} aria-hidden= "true" />)}
+          <div className="relative z-10">
             <div className="flex items-start gap-3 mb-3">
               {/* Circular org badge */}
               <div
@@ -269,6 +278,7 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
                 </h3>
               </div>
             </div>
+          </div>
 
             <p
               className="font-mono leading-loose mb-4"

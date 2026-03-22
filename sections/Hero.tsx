@@ -316,13 +316,13 @@ export function Hero() {
             <p
               className="font-mono uppercase tracking-widest"
               style={{
-                fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
+                fontSize: "clamp(1.2rem, 3vw, 1.5rem)",
                 fontWeight: "bold",
                 color: "#ffffff",
                 textShadow: "0 0 10px rgba(5,150,105,0.5), 0 4px 8px rgba(0,0,0,0.3)",
               }}
             >
-              {profile.tagline}
+              {profile.title}
             </p>
           </motion.div>
 
@@ -339,7 +339,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: disabled ? 0 : 1.4, duration: 0.7 }}
           >
-            {profile.title}
+            {profile.tagline}
           </motion.p>
 
           {/* CTA buttons */}
