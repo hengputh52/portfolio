@@ -1,4 +1,4 @@
-import angkor_guide_thuminal from '@/public/angkor_guide_thumnail.jpg'
+
 
 // ============================================================
 // Single source of truth — edit only this file.
@@ -8,13 +8,12 @@ export const profile = {
   name:    "Meng Heng",
   title:   "Software Engineer",
   tagline: "Cambodia Academy of Digital Technology Student",
-  bio: `Root system online. Growth confirmed.
-I design and build high-performance software systems — from cloud infrastructure and mobile apps to AI-integrated products.
-Every deployment is cultivated for clarity, resilience, and a future where technology serves nature.`,
+  bio: `Coding for Growth, Coding for Fun.
+    An enthusiastic kid from Kompang Chan province who fall in love with tech and dedicate for good life— I design , build a website, mobile application, and other system`,
   location: "PHNOM PENH, CAMBODIA",
   email:    "mheng770@gmail.com",
   github:   "https://github.com/hengputh52",
-  linkedin: "https://linkedin.com/in/yourusername",
+  telephone: "+855 90979874",
 };
 
 // ============================================================
@@ -37,23 +36,41 @@ export const experiences = [
 // VOLUNTEER
 // ============================================================
 export const volunteers = [
-  {
+    {
     id:          "vol-1",
     date:        "December 2025",
     org:         "Digital Government Forum",
     title:       "Public Relation",
     description: "Participating in making a video about the event",
     tech:        [],
-    imageSrc:    "/dgf_gor.jpg",
+    imageSrc:    "/dgf_image.jpg",
   },
-  {
+    {
     id:          "vol-2",
     date:        "November 2025",
     org:         "VBNK",
     title:       "Youth Digital Storytelling & Community Engagement",
-    description: "Participate in workshop",
+    description: "Participating in workshop and learning about digital storytelling",
     tech:        [],
-    imageSrc:    "/digital_story.jpg",
+    imageSrc:    "/digital_story_image.jpg",
+  },
+  {
+    id:          "vol-3",
+    date:        "November 2025",
+    org:         "SongxExpert",
+    title:       "Video Competitor",
+    description: "Creating a video for competitor",
+    tech:        [],
+    imageSrc:    "/sony_video_2.jpg",
+  },
+  {
+    id:          "vol-4",
+    date:        "Jan-Mar 2025",
+    org:         "Dream Girl Contest",
+    title:       " Media Team",
+    description: "shooting video, video editing, operator",
+    tech:        [],
+    imageSrc:    "/dgf_gor.jpg",
   },
 ];
 
@@ -67,9 +84,10 @@ export const projects = [
     description: "DasTern is now a fully functional mobile app that helps patients take their medicine correctly. By combining local OCR and smart AI, it instantly converts paper prescriptions into digital schedules",
     tech:     ["Flutter", "Nest JS", "PostgreSQL", "Docker"],
     imageSrc: "/das-tern.jpg",
-    href:     "#",
-    year:     "2024",
-    status:   "DEPLOYED",
+    demo:     "#",
+    source:   "https://github.com/Choeng-Rayu/das-tern.git",
+    year:     "2026",
+    status:   "",
   },
   {
     id:       "proj-2",
@@ -77,9 +95,10 @@ export const projects = [
     description: "Angkor Guide is offline tour application created for international tourists and people that is interested in historical temple. this app acts as tour guide while visiting temple.",
     tech:     ["Flutter"],
     imageSrc: "/angkor_guide_1.jpg",
-    href:     "#",
-    year:     "2024",
-    status:   "DEPLOYED",
+    demo:       "#",
+    source:     "https://github.com/hengputh52/Angkor_Guide.git",
+    year:     "2026",
+    status:   "",
   },
   {
     id:       "proj-3",
@@ -87,19 +106,21 @@ export const projects = [
     description: "PSABook is a website that lets people buy and sell second-hand books.  The goal is to make reading more accessible and promote book reuse in the local community.",
     tech:     ["React JS", "Node JS", "mySql"],
     imageSrc: "/psa_book.jpg",
-    href:     "#",
-    year:     "2023",
+    demo:     "#",
+    source:     "https://github.com/hengputh52/PSABook.git",
+    year:     "2025",
     status:   "LIVE",
   },
   {
     id:       "proj-4",
     title:    "TH Movie",
-    description: "Streaming Movie Website",
+    description: "Streaming Movie Website. our purpose is to attract audiences to purchase our product (movie)",
     tech:     ["HTML", "CSS"],
     imageSrc: "/th-movie.jpg",
-    href:     "#",
-    year:     "2023",
-    status:   "OPEN_SOURCE",
+    source:   "https://github.com/hengputh52/steaming-website.git",
+    demo:     "https://thmovie.netlify.app/",
+    year:     "2025",
+    status:   "",
   },
   {
     id:       "proj-5",
@@ -107,9 +128,10 @@ export const projects = [
     description: "Delivery Guy is a casual time-challenge game where players control a delivery driver in a busy city. The main objective is to deliver food orders to customers before time runs out, while avoiding traffic and police.",
     tech:     ["Unity"],
     imageSrc: "/delivery_guy.jpg",
-    href:     "#",
-    year:     "2024",
-    status:   "IN_FIELD",
+    demo:     "#",
+    source:   "https://github.com/hengputh52/Delivery-Guy.git",
+    year:     "2025",
+    status:   "",
   },
 ];
 

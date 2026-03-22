@@ -173,7 +173,7 @@ export function Skills() {
 
         {/* ── LEFT: CORE SKILLS energy bars ── */}
         <div>
-          <p
+          {/* <p
             className="font-mono text-[9px] tracking-widest uppercase mb-6"
             style={{ color: "rgba(8,145,178,0.5)" }}
           >
@@ -212,7 +212,7 @@ export function Skills() {
                 <EnergyBar level={skill.level} delay={disabled ? 0 : i * 0.1} />
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
           {/* ── HEXAGONAL TECH GRID ── */}
           <motion.div
@@ -362,7 +362,7 @@ export function Skills() {
             </div>
           </motion.div>
 
-          {/* Commit Graph */}
+          {/* Commit Graph
           <motion.div
             className="glass-card p-5 sm:p-6"
             initial={disabled ? {} : { opacity: 0, y: 20 }}
@@ -371,7 +371,7 @@ export function Skills() {
             transition={{ ...transition, delay: disabled ? 0 : 0.3 }}
           >
             <CommitGraph />
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

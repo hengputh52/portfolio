@@ -9,13 +9,14 @@ interface ProjectCardProps {
   description: string;
   tech:     string[];
   imageSrc: string;
-  href:     string;
+  source: string;
+  demo: string;
   year:     string;
   status:   string;
 }
 
 export function ProjectCard({
-  title, description, tech, imageSrc, href, year, status,
+  title, description, tech, imageSrc, source, demo, year, status,
 }: ProjectCardProps) {
   const [scanning, setScanning] = useState(false);
   const { disabled } = useMotionConfig();
@@ -150,17 +151,35 @@ export function ProjectCard({
         >
           {description}
         </p>
-        <a
-          href={href}
-          className="chromatic inline-flex items-center gap-2 font-mono text-[9px]
-                     tracking-widest uppercase min-h-[44px] py-2 transition-colors duration-200"
-          style={{
-            color:      "#059669",
-            textShadow: "0 0 8px rgba(5,150,105,0.35)",
-          }}
-        >
-          VIEW PROJECT →
-        </a>
+
+        <div className="flex flex-row items-center gap-4">
+          {/* First Link */}
+          <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="chromatic inline-flex items-center gap-2 font-mono text-xs 
+                      tracking-widest uppercase py-3 px-6 border border-[#059669] 
+                      transition-all duration-200 hover:bg-[#059669]/10"
+            style={{ color: "#059669", textShadow: "0 0 8px rgba(5,150,105,0.35)" }}
+          >
+            DEMO PROJECT 
+          </a>
+
+          {/* Second Link */}
+          <a
+            href={source}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="chromatic inline-flex items-center gap-2 font-mono text-xs 
+                      tracking-widest uppercase py-3 px-6 border border-[#059669] 
+                      transition-all duration-200 hover:bg-[#059669]/10"
+            style={{ color: "#059669", textShadow: "0 0 8px rgba(5,150,105,0.35)" }}
+          >
+            VIEW CODE 
+          </a>
+</div>
+
       </div>
     </motion.article>
   );

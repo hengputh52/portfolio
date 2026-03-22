@@ -238,7 +238,7 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
           <div
             className="glass-card p-8 lg:p-10 relative z-10 overflow-hidden"
             style={{
-              borderLeft: "3px solid rgba(8,145,178,0.4)",
+              borderLeft: "3px solid rgba(98, 154, 102, 0.4)",
               backgroundImage: item.imageSrc ? `url(${item.imageSrc})` : undefined,
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -246,24 +246,24 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
               
             }}
           >
-            {item.imageSrc && (<div className="absolute inset-0 z-0" style={{background: "rgba(255,255,255,0.1)"}} aria-hidden= "true" />)}
+            {item.imageSrc && (<div className="absolute inset-0 z-0" style={{background: "linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 30%)"}} aria-hidden= "true" />)}
           <div className="relative z-10">
             <div className="flex items-start gap-3 mb-3">
-              {/* Circular org badge */}
+              {/* Circular org badge
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{
-                  background: "rgba(8,145,178,0.1)",
-                  border:     "1px solid rgba(8,145,178,0.35)",
+                  background: "rgba(232, 236, 233)",
+                  border:     "1px solid rgba(104, 180, 199, 0.35)",
                   boxShadow:  "0 0 8px rgba(8,145,178,0.15)",
                 }}
               >
-                <span className="font-mono text-[11px] uppercase font-bold" style={{ color: "#0891B2" }}>
+                <span className="font-mono text-[11px] uppercase font-bold" style={{ color: "#11fa63" }}>
                   {(item.org ?? item.company ?? "V").charAt(0)}
                 </span>
-              </div>
+              </div> */}
               <div>
-                <p className="font-mono text-[9px] tracking-widest uppercase mb-0.5" style={{ color: "rgba(8,145,178,0.6)" }}>
+                <p className="font-mono text-[12px] tracking-widest uppercase mb-0.5" style={{ color: "rgba(215, 215, 215)", textShadow: "rgba(0,0,0,0.2)" , fontWeight: "bold"}}>
                   {item.date}{" // "}{item.org ?? item.company}
                 </p>
                 <h3
@@ -271,7 +271,8 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
                   style={{
                     fontSize:      "clamp(0.9rem, 2vw, 1.2rem)",
                     letterSpacing: "0.06em",
-                    color:         "#059669",
+                    color: "#ffffff",
+                    fontWeight: "bold"
                   }}
                 >
                   {item.title}
@@ -282,7 +283,7 @@ function VolunteerCircleCards({ items }: { items: TimelineEntry[] }) {
 
             <p
               className="font-mono leading-loose mb-4"
-              style={{ fontSize: "clamp(0.75rem, 1.2vw, 0.875rem)", color: "rgba(6,78,59,0.6)" }}
+              style={{ fontSize: "clamp(0.75rem, 1.2vw, 0.875rem)", color: "rgba(225,225,225)", textShadow: "rgba(0,0,0,0.2)" }}
             >
               {item.description}
             </p>
