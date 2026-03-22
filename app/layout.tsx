@@ -17,11 +17,11 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Solar-Tech Architect",
+  title: "Meng Heng - Portfolio",
   description:
     "Full-stack software engineering portfolio. Cloud, mobile, and AI systems built at the intersection of technology and nature.",
   openGraph: {
-    title: "Portfolio — Solar-Tech Architect",
+    title: "Meng Heng - Portfolio",
     description: "Software architecture, AWS, Flutter, PostgreSQL, and AI integration.",
     type: "website",
   },
